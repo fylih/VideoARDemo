@@ -21,7 +21,7 @@ model {
     }
     android.ndk {
         moduleName = "HelloARVideoNative"
-        cppFlags.add("-I${file("package/include")}".toString())
+        cppFlags.add("-I${file("src/main/jni/include")}".toString())
         cppFlags.add("-DANDROID")
         cppFlags.add("-fexceptions")
         cppFlags.add("-frtti")
@@ -39,7 +39,7 @@ model {
         main {
             jni {
                 dependencies {
-                    library file("package/libs/armeabi-v7a/libEasyAR.so") abi "armeabi-v7a"
+                    library file("libs/armeabi-v7a/libEasyAR.so") abi "armeabi-v7a"
                 }
             }
         }
@@ -47,7 +47,7 @@ model {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'package/libs')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:20.0.0'
 }
