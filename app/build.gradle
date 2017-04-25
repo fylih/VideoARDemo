@@ -29,7 +29,8 @@ model {
         ldLibs.add("log")
         ldLibs.add("GLESv2")
     }
-    android.productFlavors {        create("arm") {
+    android.productFlavors {
+        create("arm") {
             ndk.with {
                 abiFilters.add("armeabi-v7a")
             }
@@ -47,7 +48,8 @@ model {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
+//    compile fileTree(include: ['*.jar'], dir: 'libs') // 此处放开 可以使用easyar.jar
+    compile project(':arlib') // 本项目使用将jar拆分为arlib 作为本地依赖
+//    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:20.0.0'
 }

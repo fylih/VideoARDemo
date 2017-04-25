@@ -16,7 +16,6 @@ import android.view.WindowManager;
 
 import cn.easyar.engine.EasyAR;
 
-
 public class MainActivity extends ActionBarActivity{
 
     /*
