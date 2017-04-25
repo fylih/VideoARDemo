@@ -5,6 +5,13 @@
 */
 
 #include "ar.hpp"
+#include "include/easyar/imagetracker.hpp"
+#include "include/easyar/target.hpp"
+#include "include/easyar/storage.hpp"
+#include "include/easyar/imagetarget.hpp"
+#include "include/easyar/camera.hpp"
+#include "include/easyar/matrix.hpp"
+#include "include/easyar/player.hpp"
 #include <algorithm>
 #ifdef ANDROID
 #include <android/log.h>
@@ -59,7 +66,8 @@ void AR::loadFromImage(const std::string& path)
                        "    }\n"
                        "  ]\n"
                        "}";
-    target.load(jstr.c_str(), EasyAR::kStorageAssets | EasyAR::kStorageJson);
+//    target.load(jstr.c_str(), EasyAR::kStorageAssets | EasyAR::kStorageJson);
+    target.load(jstr.c_str(), EasyAR::kStorageAbsolute | EasyAR::kStorageJson); // 通过绝对路径获取iamge(target)
     tracker_.loadTarget(target, new HelloCallBack());
 }
 

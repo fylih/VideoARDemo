@@ -6,6 +6,12 @@
 
 #include "ar.hpp"
 #include "renderer.hpp"
+#include "include/easyar/augmenter.hpp"
+#include "include/easyar/matrix.hpp"
+#include "include/easyar/frame.hpp"
+#include "include/easyar/target.hpp"
+#include "include/easyar/utility.hpp"
+#include "include/easyar/imagetarget.hpp"
 #include <jni.h>
 #include <GLES2/gl2.h>
 
@@ -109,9 +115,11 @@ void HelloARVideo::render()
         }
         if (!tracked_target) {
             if (video == NULL) {
-                if(frame.targets()[0].target().name() == std::string("argame") && texid[0]) {
+//                if(frame.targets()[0].target().name() == std::string("argame") && texid[0]) {
+                // 相应的:如果使用绝对路径作为target路径的话,以下代码中也需要修改
+                if(frame.targets()[0].target().name() == std::string("/storage/emulated/0/tencent/QQ_Images/00") && texid[0]) {
                     video = new ARVideo;
-                    video->openVideoFile("00.mp4", texid[0]);
+                    video->openVideoFile("video.mp4", texid[0]);
                     video_renderer = renderer[0];
                 }
                 else if(frame.targets()[0].target().name() == std::string("namecard") && texid[1]) {
@@ -123,7 +131,7 @@ void HelloARVideo::render()
                     video = new ARVideo;
                     video->openStreamingVideo("http://7xl1ve.com5.z0.glb.clouddn.com/sdkvideo/EasyARSDKShow201520.mp4", texid[2]);
                     video_renderer = renderer[2];
-                } // 以下为自定义效果
+                } // 模拟服务器显示MP4文件
                 else if(frame.targets()[0].target().name() == std::string("image") && texid[3]) {
                     video = new ARVideo;
                     video->openStreamingVideo("http://10.74.11.222:8080/list/99.mp4", texid[3]);
@@ -176,7 +184,8 @@ JNIEXPORT jboolean JNICALL JNIFUNCTION_NATIVE(nativeInit(JNIEnv*, jobject))
 {
     bool status = ar.initCamera();
     ar.loadAllFromJsonFile("targets.json");
-    ar.loadFromImage("namecard.jpg");
+//    ar.loadFromImage("namecard.jpg");
+    ar.loadFromImage("/storage/emulated/0/tencent/QQ_Images/00.jpg"); // 此处需要为绝对路径
     status &= ar.start();
     return status;
 }

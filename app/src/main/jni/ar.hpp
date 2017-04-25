@@ -7,13 +7,11 @@
 #ifndef __EASYAR_SAMPLE_UTILITY_AR_H__
 #define __EASYAR_SAMPLE_UTILITY_AR_H__
 
-#include "easyar/camera.hpp"
-#include "easyar/imagetracker.hpp"
-#include "easyar/augmenter.hpp"
-#include "easyar/imagetarget.hpp"
-#include "easyar/frame.hpp"
-#include "easyar/player.hpp"
-#include "easyar/utility.hpp"
+#include "include/easyar/camera.hpp"
+#include "include/easyar/imagetracker.hpp"
+#include "include/easyar/augmenter.hpp"
+#include "include/easyar/matrix.hpp"
+#include "include/easyar/player.hpp"
 #include <string>
 
 namespace EasyAR{
