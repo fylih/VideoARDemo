@@ -136,6 +136,11 @@ void HelloARVideo::render()
                     video = new ARVideo;
                     video->openStreamingVideo("http://10.74.11.222:8080/list/99.mp4", texid[3]);
                     video_renderer = renderer[3];
+                }// 使用UID作为url地址 从本地sd卡读取信息 展示video(video 路径需要在json中指定)
+                else if(frame.targets()[0].target().name() == std::string("33") && texid[0]){
+                    video = new ARVideo;
+                    video->openStreamingVideo(frame.targets()[0].target().uid(),texid[3]);
+                    video_renderer = renderer[3];
                 }
 //                else if(frame.targets()[0].target().name() == std::string("image") && texid[3]){
 //                    video = new ARVideo;
@@ -183,9 +188,10 @@ EasyAR::samples::HelloARVideo ar;
 JNIEXPORT jboolean JNICALL JNIFUNCTION_NATIVE(nativeInit(JNIEnv*, jobject))
 {
     bool status = ar.initCamera();
-    ar.loadAllFromJsonFile("targets.json");
+//    ar.loadAllFromJsonFile("targets.json");
+    ar.loadAllFromJsonFile("/storage/emulated/0/tencent/QQ_Images/test.json"); // 从sd卡读取json 注意修改type
 //    ar.loadFromImage("namecard.jpg");
-    ar.loadFromImage("/storage/emulated/0/tencent/QQ_Images/00.jpg"); // 此处需要为绝对路径
+//    ar.loadFromImage("/storage/emulated/0/tencent/QQ_Images/00.jpg"); // 此处需要为绝对路径
     status &= ar.start();
     return status;
 }

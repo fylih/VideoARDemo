@@ -10,6 +10,8 @@
 #include "easyar/base.hpp"
 #include "easyar/storage.hpp"
 #include "easyar/matrix.hpp"
+#include "base.hpp"
+#include "matrix.hpp"
 
 namespace EasyAR {
 

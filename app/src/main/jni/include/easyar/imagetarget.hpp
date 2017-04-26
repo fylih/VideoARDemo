@@ -8,6 +8,7 @@
 #define __EASYAR_IMAGETARGET_HPP__
 
 #include "easyar/target.hpp"
+#include "target.hpp"
 
 namespace EasyAR {
 

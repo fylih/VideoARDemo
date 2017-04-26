@@ -8,6 +8,7 @@
 #define __EASYAR_IMAGETRACKER_HPP__
 
 #include "easyar/base.hpp"
+#include "base.hpp"
 
 namespace EasyAR {
 

@@ -78,9 +78,17 @@ void AR::loadFromJsonFile(const std::string& path, const std::string& targetname
     tracker_.loadTarget(target, new HelloCallBack());
 }
 
+//void AR::loadAllFromJsonFile(const std::string& path)
+//{
+//    TargetList targets = ImageTarget::loadAll(path.c_str(), EasyAR::kStorageAssets);
+//    for (int i = 0; i < targets.size(); ++i) {
+//        tracker_.loadTarget(targets[i], new HelloCallBack());
+//    }
+//}
+
 void AR::loadAllFromJsonFile(const std::string& path)
 {
-    TargetList targets = ImageTarget::loadAll(path.c_str(), EasyAR::kStorageAssets);
+    TargetList targets = ImageTarget::loadAll(path.c_str(), EasyAR::kStorageAbsolute);
     for (int i = 0; i < targets.size(); ++i) {
         tracker_.loadTarget(targets[i], new HelloCallBack());
     }
